@@ -1,20 +1,34 @@
 package com.alejandrowadel.simulador.proveedor.model;
 
+import lombok.Data;
+import lombok.NonNull;
+
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
+@Data
 public class Proveedor {
-    int id;
-    String nombre;
-    String cuit;
-    String email;
-    TipoEnergia tipoEnergia;
+    @Id
+    @Column
+    private Long id;
+    @Column
+    @NonNull
+    private String nombre;
+    @Column
+    @NonNull
+    private String cuit;
+    @Column
+    @NonNull
+    private String email;
+    @Column
+    @NonNull
+    private TipoEnergia tipoEnergia;
+    @OneToMany
+    @NonNull
     List<Localidad> localidades;
+    @ManyToOne
+    @JoinColumn(name = "tarifaID")
+    private Tarifa tarifa;
 
-    public Proveedor(String nombre, String cuit, String email, TipoEnergia tipoEnergia, List<Localidad> localidades) {
-        this.nombre = nombre;
-        this.cuit = cuit;
-        this.email = email;
-        this.tipoEnergia = tipoEnergia;
-        this.localidades = localidades;
-    }
+    
 }

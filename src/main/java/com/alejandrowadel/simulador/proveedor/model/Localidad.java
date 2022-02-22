@@ -1,14 +1,27 @@
 package com.alejandrowadel.simulador.proveedor.model;
 
-public class Localidad {
-    int id;
-    String nombre;
-    Integer codPostal;
-    Provincia provincia;
+import lombok.Data;
+import lombok.NonNull;
 
-    public Localidad(String nombre, Integer codPostal, Provincia provincia) {
-        this.nombre = nombre;
-        this.codPostal = codPostal;
-        this.provincia = provincia;
-    }
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Data
+@Entity
+public class Localidad {
+    @Id
+    @Column
+    private Long id;
+    @Column
+    @NonNull
+    private String nombre;
+    @Column
+    @NonNull
+    private Integer codPostal;
+    @ManyToOne
+    @NonNull
+    private Provincia provincia;
+
 }
