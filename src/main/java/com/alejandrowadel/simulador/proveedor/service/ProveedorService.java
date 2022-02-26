@@ -28,4 +28,11 @@ public class ProveedorService {
 
     }
 
+    public Proveedor actualizarProveedor(Long id, Proveedor newProveedor){
+         Proveedor proveedor = proveedorDAO.getById(id);
+         proveedor.setNombre(newProveedor.getNombre());
+         proveedor.setCuit(newProveedor.getCuit());
+         proveedor.setEmail(newProveedor.getEmail());
+         return proveedorDAO.save(proveedor);
+    }
 }

@@ -1,8 +1,10 @@
 package com.alejandrowadel.simulador.proveedor.controller;
 
 import com.alejandrowadel.simulador.proveedor.model.Proveedor;
+import com.alejandrowadel.simulador.proveedor.repository.ProveedorDAO;
 import com.alejandrowadel.simulador.proveedor.service.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ public class ProveedorController {
 
     @Autowired
     ProveedorService proveedorService;
-    Proveedor proveedor;
+
 
     @GetMapping
     public ResponseEntity listarProveedores() {
@@ -25,4 +27,13 @@ public class ProveedorController {
         Proveedor resource = proveedorService.guardarProveedor(proveedor);
         return ResponseEntity.ok(resource);
     }
+
+    @PatchMapping ("/{id}")
+    public ResponseEntity<Proveedor> actualizarProveedor(
+            @PathVariable(value = "id") Long proveedorId,
+            @RequestBody Proveedor proveedorDetalle) {
+        return ResponseEntity.ok(proveedorService.actualizarProveedor(proveedorId,proveedorDetalle));
+
+    }
+
 }
