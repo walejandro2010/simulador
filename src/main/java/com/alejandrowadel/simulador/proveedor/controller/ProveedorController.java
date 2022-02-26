@@ -1,12 +1,10 @@
 package com.alejandrowadel.simulador.proveedor.controller;
 
+import com.alejandrowadel.simulador.proveedor.model.Proveedor;
 import com.alejandrowadel.simulador.proveedor.service.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/proveedores")
@@ -14,10 +12,17 @@ public class ProveedorController {
 
     @Autowired
     ProveedorService proveedorService;
+    Proveedor proveedor;
 
     @GetMapping
-    public ResponseEntity listarProveedores(){
+    public ResponseEntity listarProveedores() {
         return ResponseEntity.ok(proveedorService.listarProveedores());
 
+    }
+    //este es del controller, vamos a hacer cosas de la vista
+    @PostMapping
+    public ResponseEntity guardarProveedor(@RequestBody Proveedor proveedor) {
+        Proveedor resource = proveedorService.guardarProveedor(proveedor);
+        return ResponseEntity.ok(resource);
     }
 }
