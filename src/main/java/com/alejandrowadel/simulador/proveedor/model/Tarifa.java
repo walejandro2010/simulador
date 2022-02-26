@@ -14,7 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING,
         name = "tipo_energia")
-public abstract class Tarifa {
+public abstract class Tarifa  {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column
     Long id;

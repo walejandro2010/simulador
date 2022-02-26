@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -18,6 +20,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class Localidad {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column
     private Long id;
