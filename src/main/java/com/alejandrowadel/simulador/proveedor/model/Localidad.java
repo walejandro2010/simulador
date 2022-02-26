@@ -1,6 +1,7 @@
 package com.alejandrowadel.simulador.proveedor.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Localidad {
     @Id
     @Column

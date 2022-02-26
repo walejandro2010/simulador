@@ -1,12 +1,14 @@
 package com.alejandrowadel.simulador.proveedor.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.List;
 @Entity
 @Data
+@NoArgsConstructor
 public class Proveedor {
     @Id
     @Column
@@ -27,7 +29,7 @@ public class Proveedor {
     @NonNull
     List<Localidad> localidades;
     @ManyToOne
-    @JoinColumn(name = "tarifaID")
+    @JoinColumn(name = "tarifa_id")
     private Tarifa tarifa;
 
     
