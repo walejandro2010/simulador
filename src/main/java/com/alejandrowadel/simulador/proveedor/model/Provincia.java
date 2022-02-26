@@ -17,7 +17,6 @@ public class Provincia {
     private Long id;
 
     @Column
-    @NonNull
     private String nombre;
 
 
