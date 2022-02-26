@@ -1,12 +1,18 @@
 package com.alejandrowadel.simulador.proveedor.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.List;
 
 @Entity
@@ -17,16 +23,12 @@ public class Proveedor {
     @Column
     private Long id;
     @Column
-    @NonNull
     private String nombre;
     @Column
-    @NonNull
     private String cuit;
     @Column
-    @NonNull
     private String email;
     @Column
-    @NonNull
     @Enumerated(EnumType.STRING)
     private TipoEnergia tipoEnergia;
     @ManyToMany(cascade = { CascadeType.ALL })
