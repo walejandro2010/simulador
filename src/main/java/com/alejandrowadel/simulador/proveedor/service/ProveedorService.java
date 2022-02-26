@@ -17,22 +17,28 @@ public class ProveedorService {
     ProveedorDAO proveedorDAO;
     Proveedor proveedor;
 
-    public List<Proveedor> listarProveedores(){
+    public List<Proveedor> listarProveedores() {
         return proveedorDAO.findAll();
 
     }
     //este es servicio, aca vamos a hacer logica de negocios
 
-    public Proveedor guardarProveedor(Proveedor proveedor){
+    public Proveedor guardarProveedor(Proveedor proveedor) {
         return proveedorDAO.save(proveedor);
 
     }
 
-    public Proveedor actualizarProveedor(Long id, Proveedor newProveedor){
-         Proveedor proveedor = proveedorDAO.getById(id);
-         proveedor.setNombre(newProveedor.getNombre());
-         proveedor.setCuit(newProveedor.getCuit());
-         proveedor.setEmail(newProveedor.getEmail());
-         return proveedorDAO.save(proveedor);
+    public Proveedor actualizarProveedor(Long id, Proveedor newProveedor) {
+        Proveedor proveedor = proveedorDAO.getById(id);
+        if (newProveedor.getNombre() != null) {
+            proveedor.setNombre(newProveedor.getNombre());
+        }
+        if (newProveedor.getCuit() != null) {
+            proveedor.setCuit(newProveedor.getCuit());
+        }
+        if (newProveedor.getEmail() != null) {
+            proveedor.setEmail(newProveedor.getEmail());
+        }
+        return proveedorDAO.save(proveedor);
     }
 }

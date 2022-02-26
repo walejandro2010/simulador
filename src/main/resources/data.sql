@@ -21,9 +21,9 @@ CREATE TABLE Proveedor
 (
     id           INT PRIMARY KEY,
     nombre       VARCHAR(250) NOT NULL,
-    cuit         VARCHAR(250) NOT NULL,
-    email        VARCHAR(250) NOT NULL,
-    tipo_energia VARCHAR(250) NOT NULL,
+    cuit         VARCHAR(250),
+    email        VARCHAR(250),
+    tipo_energia VARCHAR(250),
     tarifa_id    INT,
     FOREIGN KEY (tarifa_id) REFERENCES Tarifa
 );
@@ -65,20 +65,17 @@ VALUES (1, 'ABACA', '20-17637537-3', 'abc1@gmail.com', 'ELECTRICIDAD', 1),
        (3, 'LETO SA', '30-17637778-5', 'abc3@gmail.com', 'ELECTRICIDAD', 2),
        (4, 'PEREZ SA', '30-17233288-5', 'abc3@gmail.com', 'GAS', 4);
 
-
-INSERT INTO Localidad (id, nombre, cod_postal)
-VALUES (1, 'La Plata', '1900'),
-       (2, 'Chascomus', '7130'),
-       (3, 'Dolores', '7100'),
-       (4, 'Castelli', '3705');
-
-
-
 INSERT INTO Provincia (id, nombre)
 VALUES (1, 'Buenos Aires'),
        (2, 'Santa Fe'),
        (3, 'Tucumán'),
        (4, 'La Rioja');
+
+INSERT INTO Localidad (id, nombre, cod_postal, provincia_id)
+VALUES (1, 'La Plata', '1900', 1),
+       (2, 'Chascomus', '7130', 1),
+       (3, 'Dolores', '7100', 1),
+       (4, 'Castelli', '3705', 1);
 
 INSERT INTO Proveedor_Localidad (proveedor_id, localidad_id)
 

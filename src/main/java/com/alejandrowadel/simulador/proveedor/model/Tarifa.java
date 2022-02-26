@@ -19,24 +19,17 @@ public abstract class Tarifa {
     @Column
     Long id;
     @Column
-    @NonNull
     String descripcion;
     @Column
-    @NonNull
     Date inicioVigencia;
     @Column
-    @NonNull
     Date finVigencia;
     @Column
-    @NonNull
     String categoria;
     @Column
-    @NonNull
     String subCategoria;
     @Column
-    @NonNull
     BigDecimal cargoFijo;
     @Column
-    @NonNull
     BigDecimal cargoVariable;
 }

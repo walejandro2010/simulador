@@ -22,16 +22,12 @@ public class Localidad {
     @Column
     private Long id;
     @Column
-    @NonNull
     private String nombre;
     @Column
-    @NonNull
     private Integer codPostal;
     @ManyToOne
-    @NonNull
     private Provincia provincia;
     @ManyToMany(mappedBy = "localidades")
-    @NonNull
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnore
