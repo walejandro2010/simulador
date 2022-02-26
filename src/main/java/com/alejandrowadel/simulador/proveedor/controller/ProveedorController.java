@@ -21,6 +21,7 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedorService.listarProveedores());
 
     }
+
     //este es del controller, vamos a hacer cosas de la vista
     @PostMapping
     public ResponseEntity guardarProveedor(@RequestBody Proveedor proveedor) {
@@ -28,12 +29,19 @@ public class ProveedorController {
         return ResponseEntity.ok(resource);
     }
 
-    @PatchMapping ("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Proveedor> actualizarProveedor(
             @PathVariable(value = "id") Long proveedorId,
             @RequestBody Proveedor proveedorDetalle) {
-        return ResponseEntity.ok(proveedorService.actualizarProveedor(proveedorId,proveedorDetalle));
+        return ResponseEntity.ok(proveedorService.actualizarProveedor(proveedorId, proveedorDetalle));
 
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity eliminarProveedor(
+            @PathVariable(value = "id") Long proveedorId) {
+        proveedorService.eliminarProveedor(proveedorId);
+        return ResponseEntity.ok().build();
     }
 
 }
+

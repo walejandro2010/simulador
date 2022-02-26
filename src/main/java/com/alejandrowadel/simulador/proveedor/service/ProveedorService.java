@@ -35,4 +35,12 @@ public class ProveedorService {
          proveedor.setEmail(newProveedor.getEmail());
          return proveedorDAO.save(proveedor);
     }
+
+    public void eliminarProveedor (Long id){
+        if (proveedorDAO.existsById(id)){
+            proveedorDAO.delete(proveedorDAO.getById(id));
+            return;
+        }
+
+    }
 }
